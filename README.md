@@ -1,5 +1,5 @@
-# [BigML] <a href="https://bigml.com/dashboard/sources"> <img src ="https://www.disid.com/wp-content/uploads/bigml-logo.png"></a> 
-https://www.primefaces.org/wp-content/uploads/2018/05/primefaces-logo.png
+# <a href="https://bigml.com/dashboard/sources"> <img src ="https://www.disid.com/wp-content/uploads/bigml-logo.png" width="20%"></a> 
+<a href="https://www.primefaces.org/"><img src ="https://www.primefaces.org/wp-content/uploads/2018/05/primefaces-logo.png" width="20%"></a>
 
 * Dependencias:
 * lombok-1.18.20
