@@ -9,9 +9,6 @@ import java.net.http.HttpResponse;
 
 public class Services {
 
-    String url = "https://bigml.io/andromeda/";
-    String credenciales = "?username=gvalencia-1;api_key=6c105f5229d2238cf5722ab7c77a454723f33e65";
-
     public static String datosAPI(Diabetes json) throws IOException, InterruptedException {
         StringBuilder entity = new StringBuilder();
         entity.append("{");
@@ -27,8 +24,7 @@ public class Services {
         entity.append("\"Edad\":").append(json.getEdad()).append("");
         entity.append("}");
         entity.append("}");
-
-//        return entity.toString();
+        
         // HttpClient funciona a partir del JDK11
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = (HttpRequest) HttpRequest.newBuilder()
@@ -38,8 +34,7 @@ public class Services {
                 .header("Content-Type", "application/json")
                 .build();
 
-        HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+        HttpResponse<String> response = client.send(request,HttpResponse.BodyHandlers.ofString());          
         return response.body();
     }
 
@@ -89,31 +84,4 @@ public class Services {
 //        "Edad": 45
 //    }
 //}
-//fields:
-//  '000000':
-//    datatype: int8
-//    name: Embarazos
-//  '000001':
-//    datatype: int16
-//    name: Glucosa
-//  '000002':
-//    datatype: int8
-//    name: Presión sanguínea
-//  '000003':
-//    datatype: int8
-//    name: Pliegue cutáneo
-//  '000004':
-//    datatype: int8
-//    name: Insulina
-//  '000005':
-//    datatype: double
-//    name: Índice de masa corporal
-//  '000006': 
-//    datatype: double
-//    name: Pedigrí diabetes
-//  '000007':
-//    datatype: int8
-//    name: Edad
-//  000008:
-//    datatype: string
-//    name: Diabetes
+

@@ -18,30 +18,34 @@ public class DiabetesC implements Serializable {
     Diabetes diabetes;
 
     public DiabetesC() {
-        diabetes = new Diabetes();    
-        diabetes.setEdad(33);
+        diabetes = new Diabetes();
+        diabetes.setEmbarazos(3);
         diabetes.setGlucosa(121);
         diabetes.setPresion(69);
+        diabetes.setPliegue(20);
         diabetes.setInsulina(79);
         diabetes.setImc(32.16743);
         diabetes.setPedigri(0.47253);
-        diabetes.setPliegue(20);
-        diabetes.setEmbarazos(3);        
+        diabetes.setEdad(33);
     }
-      
 
     public void obtenerDatos() throws IOException, InterruptedException {
-        String cadenaJson = Services.datosAPI(diabetes);        
-        JsonParser jsonParser = new JsonParser();
-        JsonObject jsonObject = (JsonObject) jsonParser.parse(cadenaJson);
-        diabetes = new Diabetes();
-        diabetes.setCategory(jsonObject.get("output").getAsString());
-        diabetes.setProbability(jsonObject.get("probability").getAsDouble());
-        if (diabetes.getCategory().equals("No")) {
-            diabetes.setResult("Que bien, no tienes diabetes");
-        } else {
-            diabetes.setResult("Lo sentimos, de acuerdo a nuestro modelo tienes diabetes");
+        try {
+            String cadenaJson = Services.datosAPI(diabetes);
+            JsonParser jsonParser = new JsonParser();
+            JsonObject jsonObject = (JsonObject) jsonParser.parse(cadenaJson);            
+            diabetes.setCategory(jsonObject.get("output").getAsString());
+            diabetes.setProbability(jsonObject.get("probability").getAsDouble());
+            if (diabetes.getCategory().equals("No")) {
+                diabetes.setResult("Que bien, no tienes diabetes");
+            } else {
+                diabetes.setResult("Lo sentimos, de acuerdo a nuestro modelo tienes diabetes");
+            }
+        } catch (Exception e) {
+            System.out.println("Error en obtenerDatosC: " + e.getMessage());
+            e.printStackTrace();
         }
+
     }
 
 }
