@@ -36,9 +36,9 @@ public class Services {
                 + "\r\n  },\r\n  "
                 + "\"GlobalParameters\": {}\r\n}");
         Request request = new Request.Builder()
-                .url("https://ussouthcentral.services.azureml.net/workspaces/b157bc48c63b40c0bb9c27bb06e533af/services/862382193e59440a8894946d9d3a9d28/execute?api-version=2.0&format=swagger")
+                .url("XXXXX aquí va el URL  xxxxxxxx")
                 .method("POST", body)
-                .addHeader("Authorization", "Bearer s1mPicE5QScWiOTDeFvrrpYyhjd8kH0N5RyCF41gba6rq/OGnPBCpRn0dd0NrzHi78B3N32NsTIHqCOUQS6v/A==")
+                .addHeader("Authorization", "Bearer XXXXXXXX aquí va el Header XXXXXXXXX")
                 .addHeader("Content-Type", "application/json")
                 .build();
         Response response = client.newCall(request).execute();
