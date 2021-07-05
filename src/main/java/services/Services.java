@@ -29,7 +29,7 @@ public class Services {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = (HttpRequest) HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(entity.toString()))
-                .uri(URI.create("https://bigml.io/andromeda/prediction?username=gvalencia-1;api_key=6c105f5229d2238cf5722ab7c77a454723f33e65"))                                
+                .uri(URI.create(" XXXXXXXX aquí va el uri XXXXXXXXX"))                                
                 .setHeader("User-Agent", "Java 11 HttpClient Bot")
                 .header("Content-Type", "application/json")
                 .build();
@@ -38,50 +38,6 @@ public class Services {
         return response.body();
     }
 
-//    public static void main(String[] args) throws Exception {
-//        Diabetes diabetes = new Diabetes();
-//        diabetes.setEdad(33);
-//        diabetes.setGlucosa(121);
-//        diabetes.setPresion(69);
-//        diabetes.setInsulina(79);
-//        diabetes.setImc(32.16743);
-//        diabetes.setPedigri(0.47253);
-//        diabetes.setPliegue(20);
-//        diabetes.setEmbarazos(3);
-//        System.out.println("Cadena" + Services.datosAPI(diabetes));   
-//        
-//    }
 
-}
 
-// https://bigml.io/andromeda/model/60a678f5048f411328000003?username=gvalencia-1;api_key=6c105f5229d2238cf5722ab7c77a454723f33e65
-//BIGML_USERNAME=gvalencia-1
-//BIGML_API_KEY=6c105f5229d2238cf5722ab7c77a454723f33e65
-//set BIGML_AUTH=username^=%BIGML_USERNAME%;api_key^=%BIGML_API_KEY%
-// https://bigml.io/andromeda/prediction/60c294dbe4279b24a1002f32?username=gvalencia-1;api_key=6c105f5229d2238cf5722ab7c77a454723f33e65
-// Test POST
-//{"model":"model/60c28b19e4279b24a1002f2d",
-//"input_data":{
-//        "000006": 0.47253,
-//        "000007": 33,
-//        "000004": 79,
-//        "000005": 32.16743,
-//        "000002": 69,
-//        "000003": 20,
-//        "000000": 3,
-//        "000001": 121
-//    }
-//}
-//{"model":"model/60c28b19e4279b24a1002f2d",
-//"input_data":{
-//        "Embarazos": 5,
-//        "Glucosa": 150,
-//        "Presión sanguínea": 69,
-//        "Pliegue cutáneo": 20,
-//        "Insulina": 79,
-//        "Índice de masa corporal": 32.16743,
-//        "Pedigrí diabetes": 0.47253,
-//        "Edad": 45
-//    }
-//}
 
