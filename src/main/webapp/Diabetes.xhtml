@@ -9,7 +9,7 @@
     <h:body >
         <p:growl showDetail="true" id="msg"/>
         <center>
-            <h1> Regresión Logística - Diabetes o no? </h1>
+            <h1> Árbol de Decisión tipo Clasificación - Diabetes </h1>
             <div style="width: 95%; margin-left: auto; margin-right: auto;" >
                 <h:form id="predicion">
                     <p:panelGrid>
@@ -36,11 +36,6 @@
                                 <p:slider for="glu" step="1" minValue="0" maxValue="248" style="width: 220px"/>
                             </p:column>
                         </p:row>
-                        <!--                    <p:row>
-                                                <p:column colspan="4" styleClass="ui-widget-header" style="background: white">
-                                                    <p:spacer height="0"/>
-                                                </p:column>
-                                            </p:row>-->
                         <p:row>
                             <p:column colspan="2" style="font-weight: bold; color: orangered;">
                                 <p:outputLabel value="¿Tu Presión sanguínea? ( 0 - 152 )"/>                        
@@ -109,7 +104,7 @@
                             </p:column>  
                         </p:row> 
                     </p:panelGrid>
-                    <p:commandButton value="Ver Resultados" actionListener="#{diabetesC.obtenerDatos()}"
+                    <p:commandButton value="Ver Resultados" actionListener="#{diabetesC.obtenerDatos2()}"
                                      update=":predicion :msg :dialog" oncomplete="PF('predice').show();"/>
                 </h:form>
 

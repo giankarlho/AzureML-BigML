@@ -9,7 +9,7 @@
     <h:body >
         <p:growl showDetail="true" id="msg"/>
         <center>
-            <h1> Regresión Logística - Diabetes o no? </h1>
+            <h1> Árbol de Decisión tipo Clasificación - Diabetes </h1>
             <div style="width: 95%; margin-left: auto; margin-right: auto;" >
                 <h:form id="predicion">
                     <p:panelGrid>
@@ -36,17 +36,12 @@
                                 <p:slider for="glu" step="1" minValue="0" maxValue="248" style="width: 220px"/>
                             </p:column>
                         </p:row>
-                        <!--                    <p:row>
-                                                <p:column colspan="4" styleClass="ui-widget-header" style="background: white">
-                                                    <p:spacer height="0"/>
-                                                </p:column>
-                                            </p:row>-->
                         <p:row>
                             <p:column colspan="2" style="font-weight: bold; color: orangered;">
-                                <p:outputLabel value="¿Tu Presión sanguínea?"/>                        
+                                <p:outputLabel value="¿Tu Presión sanguínea? ( 0 - 152 )"/>                        
                             </p:column>
                             <p:column colspan="2" style="font-weight: bold; color: orangered;">
-                                <p:outputLabel value="¿Insulina?"/>                
+                                <p:outputLabel value="¿Insulina? ( 0 - 1057 )"/>                
                             </p:column>
                         </p:row>
                         <p:row>
@@ -65,11 +60,11 @@
                         </p:row>                    
                         <p:row>
                             <p:column colspan="2" style="font-weight: bold; color: orangered;">
-                                <p:outputLabel value="¿Cuál es tu índice de Masa Corporal?"/>
+                                <p:outputLabel value="¿Cuál es tu índice de Masa Corporal? ( 0.0 - 83.88 )"/>
                             </p:column>
 
                             <p:column colspan="2" style="font-weight: bold; color: orangered;">
-                                <p:outputLabel value="¿Pedigrí diabetes?"/>
+                                <p:outputLabel value="¿Pedigrí diabetes? ( 0.0 - 3.0 )"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -88,10 +83,10 @@
                         </p:row>                    
                         <p:row>
                             <p:column colspan="2" style="font-weight: bold; color: orangered;">
-                                <p:outputLabel value="¿Cantidad de Embarazos?"/>
+                                <p:outputLabel value="¿Cantidad de Embarazos? ( 0 - 21)"/>
                             </p:column>
                             <p:column  colspan="2" style="font-weight: bold; color: orangered;">
-                                <p:outputLabel value="¿Pliegue cutáneo?"/>                
+                                <p:outputLabel value="¿Pliegue cutáneo? ( 0 - 123 )"/>                
                             </p:column>
                         </p:row>
                         <p:row>
@@ -109,7 +104,7 @@
                             </p:column>  
                         </p:row> 
                     </p:panelGrid>
-                    <p:commandButton value="Ver Resultados" actionListener="#{diabetesC.obtenerDatos()}"
+                    <p:commandButton value="Ver Resultados" actionListener="#{diabetesC.obtenerDatos2()}"
                                      update=":predicion :msg :dialog" oncomplete="PF('predice').show();"/>
                 </h:form>
 
@@ -126,7 +121,7 @@
                                 <p:outputLabel value="#{diabetesC.diabetes.result}"/>
                             </p:column>
                             <p:column rowspan="2">
-                                <img src="https://www.hazunaweb.com/imagenes/prueba.jpg" border="1" width="300" height="200"/>
+                                <img src="https://www.disid.com/wp-content/uploads/bigml-logo.png" border="1" width="300" height="200"/>
                             </p:column>
                         </p:row>
 

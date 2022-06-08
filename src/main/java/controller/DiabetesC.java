@@ -10,6 +10,11 @@ import lombok.Data;
 import model.Diabetes;
 import services.Services;
 
+import java.io.File;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+
 @Named(value = "diabetesC")
 @SessionScoped
 @Data
@@ -33,7 +38,7 @@ public class DiabetesC implements Serializable {
         try {
             String cadenaJson = Services.datosAPI(diabetes);
             JsonParser jsonParser = new JsonParser();
-            JsonObject jsonObject = (JsonObject) jsonParser.parse(cadenaJson);            
+            JsonObject jsonObject = (JsonObject) jsonParser.parse(cadenaJson);
             diabetes.setCategory(jsonObject.get("output").getAsString());
             diabetes.setProbability(jsonObject.get("probability").getAsDouble());
             if (diabetes.getCategory().equals("No")) {
@@ -45,7 +50,23 @@ public class DiabetesC implements Serializable {
             System.out.println("Error en obtenerDatosC: " + e.getMessage());
             e.printStackTrace();
         }
+    }
 
+    public void obtenerDatos2() throws Exception, InterruptedException {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.enable(SerializationFeature.INDENT_OUTPUT);
+            Diabetes dia =  mapper.readValue(new File(Services.datosAPI(diabetes)), Diabetes.class);
+            diabetes.setCategory(dia.getCategory());
+            diabetes.setProbability(dia.getProbability());
+            if (diabetes.getCategory().equals("No")) {
+                diabetes.setResult("Que bien, no tienes diabetes");
+            } else {
+                diabetes.setResult("Lo sentimos, de acuerdo a nuestro modelo tienes diabetes");
+            }
+        } catch (Exception e) {
+
+        }
     }
 
 }
