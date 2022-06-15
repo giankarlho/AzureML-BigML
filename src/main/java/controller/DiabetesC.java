@@ -6,7 +6,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import lombok.Data;
 import model.Diabetes;
-import org.primefaces.json.JSONObject;
+import org.primefaces.shaded.json.JSONObject;
 import services.Services;
 
 @Named(value = "diabetesC")

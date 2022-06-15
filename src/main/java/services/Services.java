@@ -1,6 +1,5 @@
 package services;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import model.Diabetes;
 import okhttp3.MediaType;
@@ -8,15 +7,14 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import org.primefaces.json.JSONException;
-import org.primefaces.json.JSONObject;
+import org.primefaces.shaded.json.JSONException;
+import org.primefaces.shaded.json.JSONObject;
 
 // AzureML
 public class Services {
 
     public static JSONObject obtenerJSon(Diabetes modelo) throws IOException, JSONException {
-        OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body = RequestBody.create(mediaType, "{\r\n  \"Inputs\": {\r\n"
                 + "\"input1\": [\r\n      {\r\n"
@@ -24,7 +22,7 @@ public class Services {
                 + "\"Glucosa\":" + modelo.getGlucosa() + ",\r\n"
                 + "\"Presión sanguínea\":" + modelo.getPresion() + ",\r\n"
                 + "\"Pliegue cutáneo\":" + modelo.getPliegue() + ",\r\n"
-                + "\"Insulina\":"+ modelo.getInsulina() + ",\r\n"
+                + "\"Insulina\":" + modelo.getInsulina() + ",\r\n"
                 + "\"Índice de masa corporal\":" + modelo.getImc() + ",\r\n"
                 + "\"Pedigrí diabetes\":" + modelo.getPedigri() + ",\r\n"
                 + "\"Edad\":" + modelo.getEdad() + ",\r\n"
@@ -43,9 +41,7 @@ public class Services {
         Response response = client.newCall(request).execute();
         if (!response.isSuccessful()) {
             throw new IOException("Unexpected code " + response);
-        }
-        Gson gson = new Gson();
-        // Convierte la cadena body en un objeto jsonObject
+        }           
         JSONObject jsonObject = new JSONObject(response.body().string());
         JSONObject cadenaJson = jsonObject.getJSONObject("Results")
                 .getJSONArray("output1")
@@ -64,7 +60,7 @@ public class Services {
             diabetes.setPedigri(0.47253);
             diabetes.setPliegue(20);
             diabetes.setEmbarazos(3);
-            System.out.println("Lista " + Services.obtenerJSon(diabetes));
+//            System.out.println("Lista " + Services.obtenerJSon(diabetes));
 //            JSONObject cadenaJson = Services.obtenerJSon(diabetes);  
 //            System.out.println("Scored " + cadenaJson.getString("Scored Labels"));
 //            System.out.println("Probabilities " + cadenaJson.getDouble("Scored Probabilities"));
@@ -77,7 +73,6 @@ public class Services {
 //    Request-Response
 //    /execute?api-version=2.0&format=swagger      
 //    
-
 //    {
 //      "Inputs": {
 //        "input1": [
