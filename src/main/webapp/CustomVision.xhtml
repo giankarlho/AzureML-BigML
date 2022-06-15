@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl showDetail="true" id="msg">
+                <p:autoUpdate/>
+            </p:growl>
+            <center>
+                <h1 style="color: blue"> CustomVision - Clasificación de Animales</h1>
+                <div class="container">
+                    <br/>
+                    <div class="row">
+                        <div >
+                            <div class="md-inputfield">
+                                <p:outputLabel value="Link de la Imagen" /> 
+                                <br/><br/>
+                                <p:inputText class="input-block" value="#{customController.urlImagen}" required="true" requiredMessage="Ingrese Link de la Imagen"/>                                
+                                <br/><br/>
+                            </div>
+                        </div>
+                        <div>
+                            <p:commandButton id="btnConsultar" value="Consultar" actionListener="#{customController.obtenerDatos()}" update="form"/>
+                            <br/><br/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p:panelGrid columns="2">                            
+                            <p:outputLabel style="font-size: 25px; color: chocolate" value="Animals" />                             
+                            <p:outputLabel style="font-size: 25px; color: chocolate" value="Probabilidad" />                         
+                            <p:outputLabel value="Dog" />
+                            <spam style="font-size: 20px;">#{customController.modelo.probabilityDog}</spam>                        
+                            <p:outputLabel value="Cat" />                             
+                            <spam style="font-size: 20px;">#{customController.modelo.probabilityCat}</spam>                            
+                        </p:panelGrid>
+                        <br/><br/>
+                        <div>
+                            <img src="#{customController.urlImagenVista}" width="20%"/>
+                        </div>
+                        
+                    </div>
+                </div>
+                <br/>
+                <p:blockUI block="form" trigger="btnConsultar" />
+            </center>
+        </h:form>
+    </h:body>
+</html>
+
