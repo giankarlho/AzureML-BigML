@@ -40,22 +40,21 @@ public class Services {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         try {
-            
             Diabetes diabetes = new Diabetes();
-        diabetes.setEdad(33);
-        diabetes.setGlucosa(121);
-        diabetes.setPresion(69);
-        diabetes.setInsulina(79);
-        diabetes.setImc(32.16743);
-        diabetes.setPedigri(0.47253);
-        diabetes.setPliegue(20);
-        diabetes.setEmbarazos(3);
-        String cadenaJson = Services.datosAPI(diabetes);
-        System.out.println("CadenaJson " + cadenaJson);
+            diabetes.setEdad(33);
+            diabetes.setGlucosa(121);
+            diabetes.setPresion(69);
+            diabetes.setInsulina(79);
+            diabetes.setImc(32.16743);
+            diabetes.setPedigri(0.47253);
+            diabetes.setPliegue(20);
+            diabetes.setEmbarazos(3);
+            String cadenaJson = Services.datosAPI(diabetes);
+            System.out.println("CadenaJson " + cadenaJson);
         } catch (Exception e) {
             System.out.println("Error : " + e.getMessage());
         }
-        
+
     }
 }
 

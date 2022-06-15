@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.IOException;
@@ -11,8 +12,11 @@ import model.Diabetes;
 import services.Services;
 
 import java.io.File;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import model.PrediccionBody;
+import model.PrediccionInputData;
+import services.Services2;
 
 
 @Named(value = "diabetesC")
@@ -21,6 +25,12 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 public class DiabetesC implements Serializable {
 
     Diabetes diabetes;
+    Services2 services2;
+
+    public DiabetesC(Diabetes diabetes, Services2 services2) {
+        this.diabetes = diabetes;
+        this.services2 = services2;
+    }  
 
     public DiabetesC() {
         diabetes = new Diabetes();
@@ -32,6 +42,7 @@ public class DiabetesC implements Serializable {
         diabetes.setImc(32.16743);
         diabetes.setPedigri(0.47253);
         diabetes.setEdad(33);
+        services2 = new Services2();
     }
 
     public void obtenerDatos() throws IOException, InterruptedException {
@@ -51,19 +62,28 @@ public class DiabetesC implements Serializable {
             e.printStackTrace();
         }
     }
+    
+    public void predecir() throws IOException {
+//        try {
+//            PrediccionBody model = new PrediccionBody();
+//            model.setModel("model/5f52ac1b0d052e40ea0002b6");
+//            PrediccionInputData data = new PrediccionInputData();
+//            model.setInput_data(data);
+//            String response = services2.post(model);
+//            Gson gson = new Gson();
+//            PredResDTO predResDTO = gson.fromJson(response, PredResDTO.class);
+//            
+//            FacesContext.getCurrentInstance().addMessage(null,
+//                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Predicción ", "Usted "+ predResDTO.getOutput() + " tiene Diabetes"));
+//            this.clear();
+//        } catch (Exception e) {
+//            System.out.println("Error Controller");
+//        }
+    }
 
     public void obtenerDatos2() throws Exception, InterruptedException {
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            Diabetes dia =  mapper.readValue(new File(Services.datosAPI(diabetes)), Diabetes.class);
-            diabetes.setCategory(dia.getCategory());
-            diabetes.setProbability(dia.getProbability());
-            if (diabetes.getCategory().equals("No")) {
-                diabetes.setResult("Que bien, no tienes diabetes");
-            } else {
-                diabetes.setResult("Lo sentimos, de acuerdo a nuestro modelo tienes diabetes");
-            }
+            
         } catch (Exception e) {
 
         }

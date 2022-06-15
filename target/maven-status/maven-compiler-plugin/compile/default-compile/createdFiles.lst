@@ -1,3 +1,6 @@
+model\PrediccionInputData.class
 model\Diabetes.class
 controller\DiabetesC.class
+model\PrediccionBody.class
 services\Services.class
+services\Services2.class

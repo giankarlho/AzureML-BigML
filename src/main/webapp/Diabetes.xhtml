@@ -4,12 +4,12 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Modelo de Clasificación Diabetes con BigML</title>
     </h:head>
     <h:body >
         <p:growl showDetail="true" id="msg"/>
         <center>
-            <h1> Árbol de Decisión tipo Clasificación - Diabetes </h1>
+            <h1> Árbol de Decisión tipo Clasificación - Diabetes - BigML </h1>
             <div style="width: 95%; margin-left: auto; margin-right: auto;" >
                 <h:form id="predicion">
                     <p:panelGrid>
@@ -36,6 +36,11 @@
                                 <p:slider for="glu" step="1" minValue="0" maxValue="248" style="width: 220px"/>
                             </p:column>
                         </p:row>
+                        <!--                    <p:row>
+                                                <p:column colspan="4" styleClass="ui-widget-header" style="background: white">
+                                                    <p:spacer height="0"/>
+                                                </p:column>
+                                            </p:row>-->
                         <p:row>
                             <p:column colspan="2" style="font-weight: bold; color: orangered;">
                                 <p:outputLabel value="¿Tu Presión sanguínea? ( 0 - 152 )"/>                        
@@ -104,11 +109,11 @@
                             </p:column>  
                         </p:row> 
                     </p:panelGrid>
-                    <p:commandButton value="Ver Resultados" actionListener="#{diabetesC.obtenerDatos2()}"
+                    <p:commandButton value="Ver Resultados" actionListener="#{diabetesC.obtenerDatos()}"
                                      update=":predicion :msg :dialog" oncomplete="PF('predice').show();"/>
                 </h:form>
 
-                <p:dialog widgetVar="predice" id="dialog" modal="true" width="600">
+                <p:dialog widgetVar="predice" id="dialog" modal="true" width="600" header="Consumo del Modelo ML con Azure">
                     <p:panelGrid>
                         <p:row>
                             <p:column colspan="3">
@@ -121,7 +126,7 @@
                                 <p:outputLabel value="#{diabetesC.diabetes.result}"/>
                             </p:column>
                             <p:column rowspan="2">
-                                <img src="https://www.disid.com/wp-content/uploads/bigml-logo.png" border="1" width="300" height="200"/>
+                                <img src="https://todobi.com/content/images/2020/06/Nub8-Machine-Learning-With-Azure-2.jpg" border="0" width="200" height="200"/>
                             </p:column>
                         </p:row>
 
@@ -139,5 +144,3 @@
         </center>
     </h:body>
 </html>
-
-
